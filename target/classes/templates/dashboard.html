@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>GymPulse | Dashboard</title>
+    <meta name="description" content="Plataforma de divulgación científica y catálogo técnico de GymPulse."/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" href="/css/styles.css"/>
+    <style>
+        body { background: #030914; }
+        .glass-card { background: rgba(10, 18, 33, 0.86); border: 1px solid rgba(179, 197, 255, 0.12); backdrop-filter: blur(20px); }
+        .hero-glow { position: absolute; top: 0; left: 50%; width: 700px; height: 700px; transform: translateX(-50%); background: radial-gradient(circle, rgba(0, 102, 255, 0.18), transparent 40%); filter: blur(100px); pointer-events: none; }
+        .nav-link { transition: color 0.2s ease; }
+        .nav-link:hover { color: #0066ff; }
+        .card-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(3, 20, 39, 0.92)); pointer-events: none; }
+        .card-hero { background-image: radial-gradient(circle at top left, rgba(0, 102, 255, 0.22), transparent 28%), linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0)); }
+    </style>
+</head>
+<body class="min-h-screen text-white overflow-x-hidden">
+
+<div class="hero-glow"></div>
+<header class="border-b border-white/10 py-6">
+    <div class="mx-auto flex max-w-7xl items-center justify-start gap-8 px-6 md:px-12">
+        <a th:href="@{/dashboard}" class="flex items-center gap-3 text-white">
+            <span class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-[#061229] text-primary text-lg font-bold shadow-[0_0_30px_rgba(0,102,255,0.24)]">GP</span>
+            <span class="text-sm uppercase tracking-[0.35em] text-slate-300">GymPulse</span>
+        </a>
+        <nav class="hidden lg:flex items-center gap-10 text-sm text-slate-300">
+            <a th:href="@{/investigacion}" class="nav-link">Research</a>
+            <a th:href="@{/ejercicios}" class="nav-link">Workouts</a>
+            <a th:href="@{/investigacion}" class="nav-link">Nutrition</a>
+            <a th:href="@{/investigacion}" class="nav-link">Articles</a>
+        </nav>
+        
+    </div>
+</header>
+
+<main class="relative">
+    <section class="relative overflow-hidden px-6 md:px-12 py-20">
+        <div class="mx-auto max-w-7xl">
+            <div class="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] items-start">
+                <div class="space-y-8">
+                    <div class="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.35em] text-slate-300">Research Lab · Ciencia y Alto Rendimiento</div>
+                    <h1 class="max-w-3xl text-5xl font-black leading-tight tracking-[-0.03em] text-white md:text-6xl">La ciencia del movimiento elevada al máximo nivel.</h1>
+                    <p class="max-w-2xl text-lg leading-8 text-slate-300">Accede a investigaciones clínicas, biomecánica avanzada y datos nutricionales para transformar tu rendimiento atlético con rigor científico.</p>
+                    <div class="flex flex-col gap-4 sm:flex-row">
+                        <a th:href="@{/investigacion}" class="inline-flex items-center justify-center rounded-full bg-[#0066FF] px-8 py-4 text-sm font-semibold text-white shadow-lg shadow-[#0066ff]/20 transition hover:bg-blue-500">Explorar Investigación</a>
+                    </div>
+                </div>
+                <div class="grid gap-6">
+                    <a th:href="@{/ejercicios}" class="group block">
+                        <article class="glass-card relative overflow-hidden rounded-[2rem] border border-white/10 p-8 card-hero hover:shadow-[0_30px_80px_rgba(0,102,255,0.35)] transition-all">
+                            <div class="card-overlay"></div>
+                            <span class="text-xs uppercase tracking-[0.3em] text-primary">Biomecánica del Ejercicio</span>
+                            <h2 class="mt-4 text-3xl font-semibold">Análisis cinemático profundo de cada movimiento.</h2>
+                            <p class="mt-4 text-slate-300">Optimizamos patrones de reclutamiento muscular y diseño de fuerzas para mejorar técnica, rendimiento y seguridad.</p>
+                            <div class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white transition group-hover:text-white/80">Ver catálogo de ejercicios <span class="material-symbols-outlined">arrow_forward</span></div>
+                        </article>
+                    </a>
+                    <article class="glass-card relative overflow-hidden rounded-[2rem] border border-white/10 p-8 bg-[#041428]">
+                        <div class="card-overlay"></div>
+                        <span class="text-xs uppercase tracking-[0.3em] text-primary">Investigación en Nutrición</span>
+                        <h2 class="mt-4 text-3xl font-semibold">Metabolismo celular y crononutrición.</h2>
+                        <p class="mt-4 text-slate-300">Estrategias basadas en evidencia para optimizar síntesis proteica y recuperación atlética en cada ciclo.</p>
+                        <a th:href="@{/investigacion}" class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-white hover:text-white/80">Explorar artículos clave <span class="material-symbols-outlined">arrow_forward</span></a>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-6 md:px-12 pb-24">
+        <div class="mx-auto max-w-7xl grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+            <div class="glass-card rounded-[2rem] border border-white/10 p-8 overflow-hidden">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,102,255,0.18),transparent_50%)] pointer-events-none"></div>
+                <span class="text-xs uppercase tracking-[0.3em] text-primary">Módulo Alpha</span>
+                <h3 class="mt-4 text-3xl font-semibold">Base de Datos de Alimentos</h3>
+                <p class="mt-4 text-slate-300">Más de 50.000 entradas validadas con perfiles completos de aminoácidos, índice glucémico y densidad de micronutrientes, diseñadas para atletas de alta precisión.</p>
+                <div class="mt-8 flex flex-wrap gap-3">
+                    <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] uppercase tracking-[0.18em] text-slate-200">Micro-validación</span>
+                    <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] uppercase tracking-[0.18em] text-slate-200">Integración IoT</span>
+                    <span class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] uppercase tracking-[0.18em] text-slate-200">Nutrigenómica</span>
+                </div>
+            </div>
+            <div class="glass-card rounded-[2rem] border border-white/10 p-8 grid gap-6">
+                <div class="rounded-[1.75rem] bg-[#061229] p-6">
+                    <p class="text-sm uppercase tracking-[0.3em] text-primary">Research Brief</p>
+                    <p class="mt-4 text-2xl font-semibold text-white">Visión integradora de biomarcadores y alimento.</p>
+                </div>
+                <div class="rounded-[1.75rem] bg-[#041428] p-6">
+                    <p class="text-sm text-slate-400">Protocolos de alimentación que mantienen la masa muscular activa sin sacrificar recuperación ni potencia neuromuscular.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-6 md:px-12 pb-32">
+        <div class="mx-auto max-w-7xl">
+            <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-8">
+                <div>
+                    <p class="text-xs uppercase tracking-[0.3em] text-primary">Últimas Publicaciones</p>
+                    <h2 class="mt-3 text-4xl font-bold text-white">Nuevas fronteras en entrenamiento y salud metabólica.</h2>
+                </div>
+                <a th:href="@{/investigacion}" class="text-sm font-semibold text-[#6fb7ff] hover:text-white">Ver archivo completo →</a>
+            </div>
+            <div class="grid gap-6 xl:grid-cols-4">
+                <article class="interactive-card glass-card rounded-[2rem] border border-white/10 p-6 cursor-pointer hover:-translate-y-1 transform transition" data-article="hipertrofia-sarcoplasmatica">
+                    <span class="text-xs uppercase tracking-[0.3em] text-primary">Hipertrofia</span>
+                    <h3 class="mt-4 text-2xl font-semibold">Hipertrofia Sarcoplasmática vs Miófibrilar</h3>
+                    <p class="mt-4 text-slate-400 text-sm leading-relaxed">Mitos y evidencia sobre los mecanismos de adaptación estructural en el tejido muscular.</p>
+                </article>
+                <article class="interactive-card glass-card rounded-[2rem] border border-white/10 p-6 cursor-pointer hover:-translate-y-1 transform transition" data-article="variabilidad-frecuencia">
+                    <span class="text-xs uppercase tracking-[0.3em] text-primary">Metabolismo</span>
+                    <h3 class="mt-4 text-2xl font-semibold">Variabilidad de la Frecuencia Cardíaca</h3>
+                    <p class="mt-4 text-slate-400 text-sm leading-relaxed">Cómo utilizar HRV para ajustar la intensidad y prevenir sobreentrenamiento.</p>
+                </article>
+                <article class="interactive-card glass-card rounded-[2rem] border border-white/10 p-6 cursor-pointer hover:-translate-y-1 transform transition" data-article="creatina-cognitiva">
+                    <span class="text-xs uppercase tracking-[0.3em] text-primary">Suplementos</span>
+                    <h3 class="mt-4 text-2xl font-semibold">Creatina: Más allá del rendimiento</h3>
+                    <p class="mt-4 text-slate-400 text-sm leading-relaxed">Análisis del impacto cognitivo y neuroprotector de la suplementación.</p>
+                </article>
+                <article class="interactive-card glass-card rounded-[2rem] border border-white/10 p-6 cursor-pointer hover:-translate-y-1 transform transition" data-article="umbral-leucina">
+                    <span class="text-xs uppercase tracking-[0.3em] text-primary">Nutrición</span>
+                    <h3 class="mt-4 text-2xl font-semibold">Umbral de Leucina y síntesis proteica</h3>
+                    <p class="mt-4 text-slate-400 text-sm leading-relaxed">Estrategias para maximizar recuperación y adaptación muscular en cada comida.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="article-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/90 p-6 opacity-0 transition-opacity duration-300">
+    <div class="modal-panel relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-[2rem] border border-blue-400/20 bg-[#020a1a] shadow-[0_0_80px_rgba(0,102,255,0.35)] opacity-0 translate-y-6 transition-all duration-300">
+        <button id="article-modal-close" type="button" class="absolute right-5 top-5 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#020a1a]/90 text-xl text-white transition hover:bg-[#020a1a]">×</button>
+        <div class="p-10 overflow-y-auto max-h-[85vh]">
+            <p class="text-xs uppercase tracking-[0.35em] text-primary" id="article-modal-subtitle"></p>
+            <h2 id="article-modal-title" class="mt-4 text-4xl font-bold text-white"></h2>
+            <div id="article-modal-body" class="mt-6 space-y-6 text-slate-300 leading-8"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const articles = {
+        "hipertrofia-sarcoplasmatica": {
+            subtitle: "Hipertrofia · Adaptación muscular",
+            title: "Sarcoplasmática vs Miófibrilar: evidencias modernas",
+            body: `
+                <p>Los protocolos de alto volumen y tensión metabólica favorecen el desarrollo sarcoplasmático, mientras que la carga máxima y la tensión mecánica sostenida promueven la hipertrofia miófibrilar. Ambos son piezas clave del crecimiento muscular, pero cada uno responde a estímulos diferentes:</p>
+                <ul class="list-disc pl-6 text-slate-300 space-y-3">
+                    <li><strong>Sarcoplasmática:</strong> repeticiones medias-altas, acumulación de metabolitos, estrés metabólico y mayor capacidad de almacenamiento de glucógeno.</li>
+                    <li><strong>Miófibrilar:</strong> series pesadas con baja a moderada repetición, alta tensión mecánica y mejora de la unidad motor-músculo.</li>
+                </ul>
+                <p>El diseño avanzado combina fases de tensión mecánica con series densas para preservar fuerza mientras aumenta el volumen, lo que mejora la capacidad de contracción y la densidad muscular.</p>
+            `
+        },
+        "variabilidad-frecuencia": {
+            subtitle: "Recuperación · Indicadores autonómicos",
+            title: "Variabilidad de la Frecuencia Cardíaca como pulso de recuperación",
+            body: `
+                <p>La variabilidad de la frecuencia cardíaca (HRV) es un indicador sensible de balance simpático-vagal. Un HRV elevado por la mañana se asocia con mejor recuperación y respuesta adaptativa, mientras que descensos bruscos alertan sobre fatiga acumulada.</p>
+                <p>Los estudios comparan cambios de HRV con carga de entrenamiento y calidad de sueño, mostrando que:</p>
+                <ul class="list-disc pl-6 text-slate-300 space-y-3">
+                    <li>Variaciones mayores al 10% indican estrés sistémico importante.</li>
+                    <li>Seguimiento en colecta diaria permite periodizar intensidad sin sobrecarga.</li>
+                </ul>
+                <p>Este análisis permite ajustar microciclos y prevenir sobreentrenamiento mediante indicadores objetivos, no solo sensaciones subjetivas.</p>
+            `
+        },
+        "creatina-cognitiva": {
+            subtitle: "Suplementación · Rendimiento neurológico",
+            title: "Creatina y función cognitiva en deportistas",
+            body: `
+                <p>Más allá de la fuerza, la creatina mejora el metabolismo neuronal y la resiliencia cerebral durante el estrés físico. La suplementación con creatina monohidratada se asocia a:</p>
+                <ul class="list-disc pl-6 text-slate-300 space-y-3">
+                    <li>Mejor rendimiento en tareas de memoria de trabajo y velocidad de respuesta.</li>
+                    <li>Reducción de la fatiga mental en sesiones de alta intensidad.</li>
+                </ul>
+                <p>La dosis recomendada para efectos cognitivos es similar a la dosis de mantenimiento muscular, y su acción se potencia cuando se vincula con hidratos de carbono de rápida absorción.</p>
+            `
+        },
+        "umbral-leucina": {
+            subtitle: "Proteínas · Síntesis proteica",
+            title: "Umbral de leucina: diseño de comida para anabolismo",
+            body: `
+                <p>La leucina actúa como disparador de la síntesis proteica muscular. Estudios muestran que alcanzar un umbral mínimo por comida es superior a distribuir proteína de manera desigual.</p>
+                <p>Comparativa práctica:</p>
+                <ul class="list-disc pl-6 text-slate-300 space-y-3">
+                    <li><strong>Huevo entero vs claras:</strong> el huevo entero aporta leucina junto a grasas y colina, mientras las claras ofrecen proteína casi pura con menos calorías.</li>
+                    <li><strong>Crema de arroz vs avena:</strong> la crema de arroz entrega carbohidratos de digestión rápida para recargas postentreno, la avena aporta fibra y energía sostenida para el desayuno.</li>
+                </ul>
+                <p>El enfoque óptimo combina fuentes de alta leucina con carbohidratos compatibles con la ventana anabólica.</p>
+            `
+        }
+    };
+
+    const modal = document.getElementById('article-modal');
+    const modalTitle = document.getElementById('article-modal-title');
+    const modalSubtitle = document.getElementById('article-modal-subtitle');
+    const modalBody = document.getElementById('article-modal-body');
+    const modalClose = document.getElementById('article-modal-close');
+
+    document.querySelectorAll('[data-article]').forEach(card => {
+        card.addEventListener('click', () => {
+            const article = articles[card.dataset.article];
+            if (!article) return;
+            modalSubtitle.textContent = article.subtitle;
+            modalTitle.textContent = article.title;
+            modalBody.innerHTML = article.body;
+            modal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                modal.classList.add('opacity-100');
+                modal.querySelector('.modal-panel').classList.remove('opacity-0', 'translate-y-6');
+            });
+        });
+    });
+
+    const closeModal = () => {
+        modal.classList.remove('opacity-100');
+        modal.querySelector('.modal-panel').classList.add('opacity-0', 'translate-y-6');
+        modal.addEventListener('transitionend', () => {
+            if (!modal.classList.contains('opacity-100')) {
+                modal.classList.add('hidden');
+            }
+        }, { once: true });
+    };
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', event => {
+        if (event.target === modal) closeModal();
+    });
+</script>
+</body>
+</html>

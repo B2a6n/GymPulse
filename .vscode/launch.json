@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-GymPulseApplication<gympulse>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.gympulse.GymPulseApplication",
+            "projectName": "gympulse",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

@@ -1,0 +1,436 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>GymPulse | Catálogo de Ejercicios</title>
+    <meta name="description" content="Catálogo técnico de ejercicios estructurado en secciones musculares."/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" href="/css/styles.css"/>
+    <style>
+        body { background: #030914; }
+        .glass-card { background: rgba(10, 18, 33, 0.86); border: 1px solid rgba(179,197,255,0.12); backdrop-filter: blur(20px); }
+        .tab-link { transition: color 0.2s ease, background-color 0.2s ease; }
+        .tab-link:hover, .tab-link.active { color: #0066ff; }
+        .section-hero { background: radial-gradient(circle at top, rgba(0,102,255,0.14), transparent 34%); }
+        .image-placeholder { background-color: #05131f; }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: grid; }
+        .back-button {
+            position: fixed;
+            top: 1rem;
+            left: 1rem;
+            z-index: 50;
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(3, 9, 20, 0.95);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+
+<a th:href="@{/dashboard}" class="back-button inline-flex items-center gap-2 rounded-full px-4 py-3 text-sm font-semibold text-white shadow-[0_20px_60px_rgba(0,102,255,0.22)] transition hover:bg-[#061229]">
+    <span class="material-symbols-outlined text-lg">arrow_back</span>
+    Regresar
+</a>
+
+<header class="border-b border-white/10 py-6">
+    <div class="mx-auto flex max-w-7xl items-center justify-start gap-8 px-6 md:px-12">
+        <a th:href="@{/dashboard}" class="flex items-center gap-3 text-white">
+            <span class="inline-flex h-11 w-11 items-center justify-center rounded-3xl bg-[#061229] text-primary font-bold shadow-[0_0_20px_rgba(0,102,255,0.2)]">GP</span>
+            <span class="text-sm uppercase tracking-[0.3em] text-slate-300">GymPulse</span>
+        </a>
+        <nav class="hidden lg:flex items-center gap-8 text-sm text-slate-300">
+            <a th:href="@{/investigacion}" class="tab-link">Research</a>
+            <a th:href="@{/ejercicios}" class="tab-link active text-white">Workouts</a>
+            <a th:href="@{/investigacion}" class="tab-link">Nutrition</a>
+            <a th:href="@{/investigacion}" class="tab-link">Articles</a>
+        </nav>
+        
+    </div>
+</header>
+
+<main class="px-6 md:px-12 pb-20 pt-10">
+    <section class="section-hero glass-card rounded-[2rem] border border-white/10 p-10 shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
+        <div class="grid gap-8 lg:grid-cols-[0.9fr_0.7fr] items-start">
+            <div class="space-y-6">
+                <p class="text-xs uppercase tracking-[0.35em] text-primary">Catálogo técnico</p>
+                <h1 class="text-4xl font-black tracking-[-0.04em] text-white md:text-5xl">Catálogo muscular premium con pestañas por grupo.</h1>
+                <p class="max-w-2xl text-slate-300 leading-8">Explora los movimientos clave para piernas, pecho, espalda, hombros, brazos y abdomen con estructura tabular y descripciones biomecánicas detalladas.</p>
+                <div class="flex flex-col gap-4 sm:flex-row">
+                    <a th:href="@{/investigacion}" class="inline-flex items-center justify-center rounded-full bg-[#0066ff] px-7 py-3 text-sm font-semibold text-white transition hover:bg-blue-500">Ver artículos</a>
+                    <a th:href="@{/dashboard}" class="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-7 py-3 text-sm font-semibold text-slate-100 transition hover:bg-white/10">Volver al inicio</a>
+                </div>
+            </div>
+            <div class="grid gap-5">
+                <div class="glass-card rounded-[2rem] p-6">
+                    <p class="text-xs uppercase tracking-[0.3em] text-primary">Estructura</p>
+                    <h2 class="mt-4 text-2xl font-semibold">Pestañas por grupo muscular</h2>
+                    <p class="mt-3 text-slate-300 text-sm leading-relaxed">Navega inmediatamente a los bloques de ejercicios con un diseño premium y enfoque científico.</p>
+                </div>
+                <div class="glass-card rounded-[2rem] p-6">
+                    <p class="text-xs uppercase tracking-[0.3em] text-primary">Biomecánica</p>
+                    <h2 class="mt-4 text-2xl font-semibold">Imágenes ilustrativas</h2>
+                    <p class="mt-3 text-slate-300 text-sm leading-relaxed">Cada bloque ofrece referencia visual y fundamento de fuerza, vectorización y control técnico.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-10">
+        <div class="glass-card rounded-[2rem] border border-white/10 p-6">
+            <div class="flex flex-wrap gap-2 lg:gap-4">
+                <button type="button" class="tab-link active rounded-full bg-[#03101f] px-5 py-3 text-sm font-semibold text-white" data-tab="pierna">Pierna</button>
+                <button type="button" class="tab-link rounded-full px-5 py-3 text-sm font-semibold text-slate-300" data-tab="pecho">Pecho</button>
+                <button type="button" class="tab-link rounded-full px-5 py-3 text-sm font-semibold text-slate-300" data-tab="espalda">Espalda</button>
+                <button type="button" class="tab-link rounded-full px-5 py-3 text-sm font-semibold text-slate-300" data-tab="biceps">Biceps</button>
+                <button type="button" class="tab-link rounded-full px-5 py-3 text-sm font-semibold text-slate-300" data-tab="triceps">Triceps</button>
+                <button type="button" class="tab-link rounded-full px-5 py-3 text-sm font-semibold text-slate-300" data-tab="hombro">Hombro</button>
+                <button type="button" class="tab-link rounded-full px-5 py-3 text-sm font-semibold text-slate-300" data-tab="abdomen">Abdomen</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-10 space-y-10">
+        <div id="pierna" class="tab-panel active space-y-6">
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Sentadilla Libre</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Controla la profundidad y el centro de gravedad para maximizar el reclutamiento de glúteo y cuádriceps.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> transición de fuerza vertical y estabilidad del core en cadena cinética cerrada.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Posición de contacto con suelo y alineación de rodillas.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Prensa Inclinada</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Minimiza la carga espinal y focaliza la fuerza en cuádriceps y aductores.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> vector de empuje diagonal con soporte de respaldo.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Extensión controlada con pies firmes.</span></p>
+                </article>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Hack Squat</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Foco en la fase excéntrica para mejorar la respuesta de cuádriceps y estabilizadores de rodilla.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> eje guiado que reduce la demanda de equilibrio.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Angulación de tobillos y puntera.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Extensión de Cuádriceps</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Aislamiento puro para tensión local en la inserción del cuádriceps.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> palanca de rodilla y control de rango final.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Patrón de extensión con tobillos flexionados.</span></p>
+                </article>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Curl Femoral Tumbado</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Aísla isquiotibiales y protege la cadena posterior con control excéntrico.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> cadera estable y activación de los flexores de rodilla.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Alineación de caderas y glúteos.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Elevación de Pantorrilla</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Trabajo de tríceps sural con énfasis en rango de movimiento completo.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> palanca de tobillo y control de fase excéntrica.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Elevación y compensación del equilibrio.</span></p>
+                </article>
+            </div>
+        </div>
+
+        <div id="pecho" class="tab-panel space-y-6">
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Press de Banca Plano</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Base de soporte para fuerza horizontal con activación de pectoral mayor y tríceps.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> línea de tiro estable y escápula retraída.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Posición de pecho y pies.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Press Inclinado con Mancuernas</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Mayor estímulo de la clavicular y estabilidad unilateral.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> trayectoria de fuerza en diagonal superior.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Ángulo de inclinación y control del hombro.</span></p>
+                </article>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Fondos en Paralelas</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Fuerza funcional con activación de pecho inferior y tríceps.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> control de codos y posicionamiento del torso.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Ángulo del torso hacia adelante.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Aperturas en Polea (Crossover)</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Tensión continua para separar fibras externas del pectoral mayor.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> arco de recorrido y aducción horizontal.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Posición de manos y torso.</span></p>
+                </article>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Press de Pecho en Máquina Hammer</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Perfil guiado para tensión constante y mayor seguridad articular.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> trayectoria fija y estabilización de hombro.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Alineación de brazos y torso.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Flexiones de Brazo (Push-ups)</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Patrón cinemático de empuje con control de core y estabilidad de hombro.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> carga corporal, anchura de manos y soporte de escápula.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Alineación corporal completa.</span></p>
+                </article>
+            </div>
+        </div>
+
+        <div id="espalda" class="tab-panel space-y-6">
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Dominadas Pronas</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Trabajo vertical con autorregulación de carga y estabilidad escapular.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> tracción superior y activación de dorsales.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Agarre pronado y tronco alineado.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Jalón al Pecho</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Alternativa guiada para fuerza dorsal con control de codo.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> tracción hacia el pecho con hombros estables.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Recorrido de barra y extensión de codos.</span></p>
+                </article>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Remo con Barra T-Bar</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Tracción medial con carga vertical y estabilidad lumbar.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> ángulo de torso fijo y aducción escapular.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Estabilidad de cadera y posición de manos.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Remo Gironda (Polea Baja)</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Tirón con pecho elevado para enfatizar dorsales y rotadores.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> ángulo bajo y retracción escapular profunda.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Línea de espalda y codos atrás.</span></p>
+                </article>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Peso Muerto Convencional</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Movimiento completo de cadena posterior para fuerza global y transferencia atlética.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> extensión de cadera y estabilidad de columna neutra.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Inicio de levantamiento y bloqueo.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Pull-Over con Cuerda en Polea Alta</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Trabajo de expansión torácica y tracción en cadena posterior.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> extensión de hombros y contracción dorsal.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Arco de movimiento y agarre.</span></p>
+                </article>
+            </div>
+        </div>
+
+        <div id="biceps" class="tab-panel space-y-6">
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Curl de Bíceps con Barra Z</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Reducción de tensión en muñeca y enfoque en la flexión de codo.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> trayectoria de antebrazo controlada y torque máximo.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Agarre semi-pronado y altura de codo.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Curl Alterno con Mancuernas en Banco Inclinado</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Aislamiento del bíceps con amplitud máxima de movimiento.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> extensión completa y control excéntrico.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Banco inclinado y trayectoria curva.</span></p>
+                </article>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Curl Predicador (Banco Scott)</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Aislamiento unilateral con soporte de brazo y tensión constante.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> evita impulso y enfatiza la fase concéntrica.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Apoyo de antebrazo y codo fijo.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Curl de Bíceps Martillo</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Activa braquiorradial y brazo largo, ideal para fuerza de agarre.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> posición neutra de muñeca y estabilidad anterior.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Trayectoria vertical y postura.</span></p>
+                </article>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Curl Concentrado</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Máximo aislamiento del pico de contracción en bíceps.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> codo fijo y control de rotación interna.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Posición de apoyo y recorrido.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Curl en Polea Alta (Doble Bíceps)</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Tensión continua con estabilización de torso y recorrido suave.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> tensión uniforme en todo el rango de movimiento.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Brazos paralelos y codos anclados.</span></p>
+                </article>
+            </div>
+        </div>
+
+        <div id="triceps" class="tab-panel space-y-6">
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Extensión de Tríceps en Polea Alta con Cuerda</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Fuerza de empuje con control de la fase final y separación de cabezas.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> ligera abducción de hombro y extensión de codo.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Cuerda abierta y muñecas flexionadas.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Press Francés con Barra Z</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Carga axial para cabeza larga del tríceps con control de codo.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> recorrido guiado y tensión prolongada.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Angulación del brazo y muñecas.</span></p>
+                </article>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Fondos entre Bancos</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Enfoca el empuje en la cabeza larga con alineación de codo hacia atrás.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> cadena cinética abierta con control de core.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Posición de cuerpo y altura.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Extensión Tras Nuca con Mancuerna</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Estiramiento profundo de la cabeza larga y recorrido completo del brazo.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> extensión de codo en carga horizontal al tronco.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Hombros estables y control excéntrico.</span></p>
+                </article>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Patada de Tríceps en Polea</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Enfoque en contracción final de la cabeza lateral.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> palanca corta y estabilización del torso.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Codo fijo y brazo paralelo.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Press de Banca con Agarre Cerrado</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Movilidad de tríceps con estabilización de hombros y pecho.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> eje de empuje más vertical y menor tensión escapular.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Agarre estrecho y recorrido del codo.</span></p>
+                </article>
+            </div>
+        </div>
+
+        <div id="hombro" class="tab-panel space-y-6">
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Press Militar con Barra</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Carga vertical pura para deltoides anteriores y estabilización de core.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> elevación sobre la cabeza con columna neutra.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Posición final y hombros.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Elevaciones Laterales con Mancuernas</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Aislamiento del deltoides medio con tratamiento de abducción lateral.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> rango de movimiento controlado y apoyo de hombros.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Brazo en abducción y muñeca neutra.</span></p>
+                </article>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Pájaros en Polea (Deltoides Posterior)</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Estabiliza la escápula y asegura retracción del hombro posterior.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> acción de abducción horizontal y rotación externa.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Recorrido posterior y control.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Press Arnold</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Patrón rotacional que activa deltoides anterior y lateral.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> rotación de muñeca y recorrido en semicirculo.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Transición de interno a externo.</span></p>
+                </article>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Elevaciones Frontales con Disco</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Enfoca el deltoides anterior con recorrido frontal controlado.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> palanca anterior y activación en eje sagital.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Cara del disco y alineación de muñeca.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Remo al Mentón con Barra Z</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Impulso vertical con énfasis en deltoides laterales y trapecio superior.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> elevación cercana al cuerpo y control de codos.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Trayectoria y agarre.</span></p>
+                </article>
+            </div>
+        </div>
+
+        <div id="abdomen" class="tab-panel space-y-6">
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Cruncis Abdominales en Polea Alta</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Tensión constante y control de protracción escapular.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> flexión lumbo-pélvica con resistencia estable.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Ajuste de cable y recorrido.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Elevaciones de Piernas Colgado</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Estabilización de hombros y activación de flexores de cadera y recto abdominal.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> flexión de cadera contra la gravedad.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Posición de tronco y piernas.</span></p>
+                </article>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Plancha Isométrica Prona</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Estabilidad global de core y resistencia isométrica de la pared abdominal.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> rigidez de columna neutra y carga compresiva moderada.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Alineación hombros-caderas-tobillos.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Giros Rusos con Disco</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Rotación controlada del tronco y transferencia oblicua de fuerza.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> torsión del core con cadera estable.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Posición de piernas y disco.</span></p>
+                </article>
+            </div>
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Crunch Bicicleta</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Trabajo dinámico del recto abdominal y oblicuos con patrón cruzado.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> flexión alterna de cadera y rotación axial.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Cadencia constante y control lumbar.</span></p>
+                </article>
+                <article class="glass-card rounded-[2rem] border border-white/10 p-6">
+                    <h3 class="text-2xl font-semibold">Abdominales Rueda (Ab Wheel)</h3>
+                    <p class="mt-3 text-slate-300 leading-7">Extensión profunda y trabajo de estabilización anterior del core.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Biomecánica:</strong> resistencia progresiva en el patrón de rueda hacia adelante.</p>
+                    <p class="mt-4 text-slate-400 text-sm"><strong>Imagen:</strong> <span class="text-slate-300">Alineación de muñecas y caderas.</span></p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <footer class="mt-16 border-t border-white/10 py-10 text-center text-sm text-slate-500">© 2026 GymPulse Research Lab · Catálogo técnico estable.</footer>
+</main>
+
+<script>
+    const tabs = document.querySelectorAll('[data-tab]');
+    const panels = document.querySelectorAll('.tab-panel');
+
+    tabs.forEach(button => {
+        button.addEventListener('click', () => {
+            tabs.forEach(tab => tab.classList.remove('active', 'bg-[#03101f]', 'text-white'));
+            panels.forEach(panel => panel.classList.remove('active'));
+            button.classList.add('active', 'bg-[#03101f]', 'text-white');
+            document.getElementById(button.dataset.tab).classList.add('active');
+            window.location.hash = button.dataset.tab;
+        });
+    });
+
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+        const targetButton = Array.from(tabs).find(tab => tab.dataset.tab === hash);
+        if (targetButton) targetButton.click();
+    }
+</script>
+</body>
+</html>

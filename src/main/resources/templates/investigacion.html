@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html class="dark" lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>GymPulse | Investigación</title>
+    <meta name="description" content="Sección de artículos científicos y base de datos de alimentos de GymPulse."/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" href="/css/styles.css"/>
+    <style>
+        body { background: #030914; }
+        .glass-card { background: rgba(10,18,33,0.88); border: 1px solid rgba(179,197,255,0.12); backdrop-filter: blur(20px); }
+        .hero-gradient { background: radial-gradient(circle at top left, rgba(0,102,255,0.15), transparent 30%), radial-gradient(circle at bottom right, rgba(123,208,255,0.08), transparent 25%); }
+        .section-accent { border-color: rgba(0,102,255,0.18); }
+    </style>
+</head>
+<body class="min-h-screen text-white">
+
+<header class="border-b border-white/10 py-6">
+    <div class="mx-auto flex max-w-7xl flex-col gap-6 px-6 md:px-12 lg:flex-row lg:items-center lg:justify-start lg:gap-6">
+        <div class="space-y-2">
+            <p class="text-xs uppercase tracking-[0.35em] text-primary">Research Hub</p>
+            <h1 class="text-4xl font-bold tracking-[-0.03em] md:text-5xl">Artículos científicos y datos de alimentos para alto rendimiento.</h1>
+        </div>
+        <div class="flex flex-wrap items-center gap-3">
+            <a th:href="@{/dashboard}" class="text-sm text-slate-300 hover:text-white">Dashboard</a>
+            <a th:href="@{/ejercicios}" class="text-sm text-slate-300 hover:text-white">Workouts</a>
+        </div>
+    </div>
+</header>
+
+<main class="px-6 md:px-12 py-16">
+    <section class="glass-card hero-gradient rounded-[2rem] border border-white/10 p-10 mb-12 shadow-[0_30px_80px_rgba(0,0,0,0.35)]">
+        <div class="grid gap-10 lg:grid-cols-[0.9fr_0.7fr] items-center">
+            <div class="space-y-6">
+                <p class="text-xs uppercase tracking-[0.35em] text-primary">Investigación aplicada</p>
+                <h2 class="text-4xl font-bold leading-tight md:text-5xl">Investigación y alimento unidos por la ciencia del rendimiento.</h2>
+                <p class="max-w-2xl text-slate-300 leading-8">Accede a análisis especializados de hipertrofia, frecuencia cardíaca, creatina cognitiva y nutrición basada en biomarcadores.</p>
+                <div class="flex flex-col gap-4 sm:flex-row">
+                    <a th:href="@{/investigacion}" class="inline-flex items-center justify-center rounded-full bg-[#0066ff] px-7 py-4 text-sm font-semibold text-white transition hover:bg-blue-500">Ver publicaciones</a>
+                    <a th:href="@{/dashboard}" class="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-7 py-4 text-sm font-semibold text-slate-100 transition hover:bg-white/10">Ir al inicio</a>
+                </div>
+            </div>
+            <div class="rounded-[2rem] bg-[#041428] p-8">
+                <div class="h-56 rounded-[1.75rem] bg-[radial-gradient(circle_at_center,rgba(0,102,255,0.18),transparent_58%)]"></div>
+                <div class="mt-6 space-y-3">
+                    <p class="text-sm uppercase tracking-[0.35em] text-primary">Base de datos</p>
+                    <p class="text-slate-300 leading-7">Nutrientes, aminoácidos, crononutrición y protocolos validados para programas de masa y recuperación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="grid gap-6 lg:grid-cols-3 mb-12">
+        <article class="interactive-card glass-card rounded-[2rem] border border-white/10 p-8 section-accent cursor-pointer hover:-translate-y-1 transform transition" data-article="hipertrofia-sarcoplasmatica">
+            <span class="text-xs uppercase tracking-[0.35em] text-primary">Hipertrofia</span>
+            <h3 class="mt-4 text-2xl font-semibold">Hipertrofia Sarcoplasmática</h3>
+            <p class="mt-4 text-slate-300 text-sm leading-relaxed">Documentamos la evidencia más reciente sobre volumen, estrés metabólico y adaptación muscular.</p>
+        </article>
+        <article class="interactive-card glass-card rounded-[2rem] border border-white/10 p-8 section-accent cursor-pointer hover:-translate-y-1 transform transition" data-article="frecuencia-cardiaca">
+            <span class="text-xs uppercase tracking-[0.35em] text-primary">Cardio</span>
+            <h3 class="mt-4 text-2xl font-semibold">Frecuencia Cardíaca y Fatiga</h3>
+            <p class="mt-4 text-slate-300 text-sm leading-relaxed">Explora cómo la variabilidad de la frecuencia cardíaca predice la capacidad de recuperación.</p>
+        </article>
+        <article class="interactive-card glass-card rounded-[2rem] border border-white/10 p-8 section-accent cursor-pointer hover:-translate-y-1 transform transition" data-article="creatina-cognitiva">
+            <span class="text-xs uppercase tracking-[0.35em] text-primary">Nutrición</span>
+            <h3 class="mt-4 text-2xl font-semibold">Creatina y función cognitiva</h3>
+            <p class="mt-4 text-slate-300 text-sm leading-relaxed">Análisis de beneficios neurológicos y energéticos en entrenamientos de fuerza intensos.</p>
+        </article>
+    </section>
+
+    <section class="grid gap-6 lg:grid-cols-4">
+        <article class="interactive-card glass-card rounded-[2rem] border border-white/10 p-6 cursor-pointer hover:-translate-y-1 transform transition" data-article="perfil-leucina">
+            <span class="text-xs uppercase tracking-[0.35em] text-primary">Investigación</span>
+            <h3 class="mt-4 text-xl font-semibold">Perfil de Leucina</h3>
+            <p class="mt-3 text-slate-300 text-sm leading-relaxed">Umbral de aminoácido clave para iniciar síntesis proteica máxima.</p>
+        </article>
+        <article class="interactive-card glass-card rounded-[2rem] border border-white/10 p-6 cursor-pointer hover:-translate-y-1 transform transition" data-article="crononutricion-avanzada">
+            <span class="text-xs uppercase tracking-[0.35em] text-primary">Análisis</span>
+            <h3 class="mt-4 text-xl font-semibold">Crononutrición avanzada</h3>
+            <p class="mt-3 text-slate-300 text-sm leading-relaxed">Sincroniza el aporte energético con los ritmos circadianos del entrenamiento.</p>
+        </article>
+        <article class="interactive-card glass-card rounded-[2rem] border border-white/10 p-6 cursor-pointer hover:-translate-y-1 transform transition" data-article="alimentos-alto-valor">
+            <span class="text-xs uppercase tracking-[0.35em] text-primary">Data</span>
+            <h3 class="mt-4 text-xl font-semibold">Alimentos de alto valor</h3>
+            <p class="mt-3 text-slate-300 text-sm leading-relaxed">Datos detallados de macronutrientes con enfoque en calidad y densidad.</p>
+        </article>
+        <article class="interactive-card glass-card rounded-[2rem] border border-white/10 p-6 cursor-pointer hover:-translate-y-1 transform transition" data-article="biomarcadores">
+            <span class="text-xs uppercase tracking-[0.35em] text-primary">Protocolos</span>
+            <h3 class="mt-4 text-xl font-semibold">Biomarcadores</h3>
+            <p class="mt-3 text-slate-300 text-sm leading-relaxed">Indicadores de recuperación y rendimiento validados para el atletismo de élite.</p>
+        </article>
+    </section>
+</main>
+
+<div id="investigation-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/95 p-6 opacity-0 transition-opacity duration-300">
+    <div class="modal-panel relative max-h-[90vh] w-full max-w-5xl overflow-hidden rounded-[2rem] border border-blue-400/20 bg-[#020a1a] shadow-[0_0_80px_rgba(0,102,255,0.35)] opacity-0 translate-y-6 transition-all duration-300">
+        <button id="investigation-modal-close" type="button" class="absolute right-5 top-5 inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-[#020a1a]/90 text-xl text-white transition hover:bg-[#020a1a]">×</button>
+        <div class="p-10 overflow-y-auto max-h-[85vh]">
+            <p class="text-xs uppercase tracking-[0.35em] text-primary" id="investigation-modal-subtitle"></p>
+            <h2 id="investigation-modal-title" class="mt-4 text-4xl font-bold text-white"></h2>
+            <div id="investigation-modal-body" class="mt-6 space-y-6 text-slate-300 leading-8"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const researchCards = document.querySelectorAll('[data-article]');
+    const researchModal = document.getElementById('investigation-modal');
+    const researchModalTitle = document.getElementById('investigation-modal-title');
+    const researchModalSubtitle = document.getElementById('investigation-modal-subtitle');
+    const researchModalBody = document.getElementById('investigation-modal-body');
+    const researchModalClose = document.getElementById('investigation-modal-close');
+
+    const researchContent = {
+        "hipertrofia-sarcoplasmatica": {
+            subtitle: "Hipertrofia · Estrés metabólico",
+            title: "Hipertrofia Sarcoplasmática: evidencia sobre volumen y adaptaciones celulares",
+            body: `<p>El entrenamiento orientado a volumen elevado y repeticiones medias-altas genera mayor estrés metabólico, hinchazón celular y acumulación de metabolitos como lactato e iones de hidrógeno. Estos estímulos se asocian con aumentos en el volumen sarcoplasmático y la capacidad de almacenamiento de glucógeno.</p>
+                   <p>En contraste, la hipertrofia miófibrilar responde mejor a cargas pesadas y baja repetición, donde predomina la tensión mecánica y el reclutamiento de fibras de alto umbral. Ambos enfoques son complementarios en un programa de alto rendimiento.</p>`
+        },
+        "frecuencia-cardiaca": {
+            subtitle: "Cardio · Indicadores autonómicos",
+            title: "Frecuencia Cardíaca y Fatiga: HRV como guía de recuperación",
+            body: `<p>La variabilidad de la frecuencia cardíaca (HRV) mide la oscilación entre latidos y refleja el balance simpático-parasimpático. Un HRV elevado tras descanso indica buena recuperación, mientras que descensos sostenidos apuntan a fatiga acumulada.</p>
+                   <p>El uso de HRV en periodización permite ajustar la intensidad y el volumen, optimizando la carga sin comprometer la adaptación. Es especialmente útil en deportistas de fuerza y resistencia que trabajan con microciclos variables.</p>`
+        },
+        "creatina-cognitiva": {
+            subtitle: "Suplementos · Neuroprotección",
+            title: "Creatina y función cognitiva: conexión entre energía cerebral y fuerza",
+            body: `<p>La creatina mejora la reposición de fosfocreatina en neuronas y músculos, lo que respalda la toma de decisiones y la resistencia mental durante entrenamientos intensos.</p>
+                   <p>Los estudios confirman beneficios en memoria de trabajo y velocidad de procesamiento, especialmente en condiciones de fatiga. Su uso en protocolos de fuerza contribuye tanto al rendimiento físico como a la estabilidad cognitiva.</p>`
+        },
+        "perfil-leucina": {
+            subtitle: "Proteínas · Umbral anabólico",
+            title: "Perfil de Leucina: el disparo para la síntesis proteica",
+            body: `<p>La leucina actúa como interruptor anabólico. Alcanzar un umbral de leucina por comida es clave para maximizar la síntesis proteica muscular.</p>
+                   <p>Un ejemplo de nutrición práctica es comparar huevo entero versus claras: el huevo entero aporta leucina junto con grasas y micronutrientes, mientras las claras ofrecen proteína limpia. Ambos pueden integrarse según objetivos calóricos y de composición corporal.</p>`
+        },
+        "crononutricion-avanzada": {
+            subtitle: "Nutrición · Ritmos circadianos",
+            title: "Crononutrición avanzada: sincronía entre combustible y entrenamiento",
+            body: `<p>La crononutrición considera la hora del día y el tipo de combustible. La crema de arroz aporta carbohidratos de rápida absorción apropiados para la ventana post-entreno, mientras que la avena ofrece liberación sostenida para sesiones matutinas y recuperación.</p>
+                   <p>Este enfoque optimiza la respuesta hormonal y la recarga muscular, reduciendo la variabilidad metabólica en atletas de alto volumen.</p>`
+        },
+        "alimentos-alto-valor": {
+            subtitle: "Data · Densidad nutricional",
+            title: "Alimentos de alto valor: calidad por caloría",
+            body: `<p>El análisis de alimentos de alto valor evalúa la densidad de proteínas, micronutrientes y aminoácidos en cada ración. Los alimentos ricos en leucina, como huevo entero y yogur griego, son preferibles para la reconstrucción muscular.</p>
+                   <p>Comparaciones útiles: huevo entero versus claras, crema de arroz versus avena, fuentes lácteas frente a opciones vegetales. La elección depende de la ventana de entrenamiento y las necesidades de recuperación.</p>`
+        },
+        "biomarcadores": {
+            subtitle: "Protocolos · Rendimiento",
+            title: "Biomarcadores de recuperación y potencia atlética",
+            body: `<p>Los biomarcadores como creatina quinasa, cortisol y lactato permiten evaluar adaptación y desgaste. Su seguimiento en atletas de élite ayuda a ajustar volumen y prevenir lesiones.</p>
+                   <p>Una cadencia inteligente combina datos objetivos con sensaciones, permitiendo decisiones informadas sobre densidad de entrenamiento y recuperación estratégica.</p>`
+        }
+    };
+
+    const openInvestigationModal = (key) => {
+        const content = researchContent[key];
+        if (!content) return;
+        researchModalSubtitle.textContent = content.subtitle;
+        researchModalTitle.textContent = content.title;
+        researchModalBody.innerHTML = content.body;
+        researchModal.classList.remove('hidden');
+        requestAnimationFrame(() => {
+            researchModal.classList.add('opacity-100');
+            researchModal.querySelector('.modal-panel').classList.remove('opacity-0', 'translate-y-6');
+        });
+    };
+
+    researchCards.forEach(card => {
+        card.addEventListener('click', () => openInvestigationModal(card.dataset.article));
+    });
+
+    const closeInvestigation = () => {
+        researchModal.classList.remove('opacity-100');
+        researchModal.querySelector('.modal-panel').classList.add('opacity-0', 'translate-y-6');
+        researchModal.addEventListener('transitionend', () => {
+            if (!researchModal.classList.contains('opacity-100')) {
+                researchModal.classList.add('hidden');
+            }
+        }, { once: true });
+    };
+
+    researchModalClose.addEventListener('click', closeInvestigation);
+    researchModal.addEventListener('click', (event) => {
+        if (event.target === researchModal) closeInvestigation();
+    });
+</script>
+<footer class="border-t border-white/10 bg-[#02070f] px-6 md:px-12 py-10 text-center text-sm text-slate-500">© 2026 GymPulse Research Lab · Conocimiento científico de acceso directo.</footer>
+
+</body>
+</html>

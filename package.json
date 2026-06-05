@@ -1,0 +1,20 @@
+{
+  "name": "gympulse",
+  "version": "1.0.0",
+  "description": "Plataforma web de gimnasio con sistema recomendador personalizado",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "build:login": "node scripts/build-login.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.7.0",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1"
+  }
+}
